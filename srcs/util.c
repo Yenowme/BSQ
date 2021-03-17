@@ -20,11 +20,11 @@ int ft_atoi(char *str)
     i = 0;
     while (str[i])
     {
-        if (is_space(str[i]))
+        while (is_space(str[i]))
             i++;
-        else if (str[i] == '+') //애매허다
+        if (str[i] == '+') //애매허다
             i++;
-        else if (numeric(str[i]))
+        if (numeric(str[i]))
             break;
         else
             return (0);
@@ -32,8 +32,10 @@ int ft_atoi(char *str)
     }
     while (str[i])
     {
+
         if (!numeric(str[i]))
             return (0);
+
         value *= 10;
         value += str[i] - '0';
         i++;

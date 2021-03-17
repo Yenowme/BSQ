@@ -27,8 +27,10 @@ int valid_map(int fd, t_map *map)
 
 	i = 0;
 	j = 0;
+
 	while ((read(fd, &buf, 1)))
 	{
+
 		if (buf == '\n')
 		{
 			i++;
@@ -41,8 +43,10 @@ int valid_map(int fd, t_map *map)
 		else
 			return (0);
 	}
+
 	if (close(fd) == -1)
 		return (0);
+
 	if (i != map->size)
 		return (0);
 	return (1);
