@@ -32,16 +32,25 @@ int		valid_map(int fd, t_map *map)
 		if (buf == '\n')
 		{
 			i++;
+			if ( j != map -> size)
+				return (0);
 			j = 0;
 		}
-		else if (buf == map->emp || buf == map->obs || buf == map->full)
+		else if (buf == map->emp || buf == map->obs)
 			j++;
 		else 
 			return (0);
 	}
-	if (i != map->x || j != map->x)
+	close(fd);
+	if (i != map->x || j != map->size)
 		return (0);
- 	if (!(map->map = malloc_map(map->x)))
+ 	set_map(map->map);
+
+}
+
+void	set_map(char **map,)
+{
+	if (!(map->map = malloc_map(map->size)))
 		return (0);
-	set_map(map->map);
+	
 }
