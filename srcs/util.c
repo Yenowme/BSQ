@@ -22,7 +22,7 @@ int ft_atoi(char *str)
     {
         while (is_space(str[i]))
             i++;
-        if (str[i] == '+') //애매허다
+        if (str[i] == '+')
             i++;
         if (numeric(str[i]))
             break;
@@ -43,11 +43,6 @@ int ft_atoi(char *str)
     return (value);
 }
 
-void printerror(void)
-{
-    write(STDERR, MAPERROR, ft_strlen(MAPERROR));
-}
-
 int find_min(int west, int north, int west_north)
 {
     int min;
@@ -64,7 +59,7 @@ void print_map(t_map *map)
     i = 0;
     while (i < map->size)
     {
-        write(1, map->map[i], map->size); //each end of line..?
+        write(1, map->map[i], map->size);
         write(1, "\n", 1);
         i++;
     }

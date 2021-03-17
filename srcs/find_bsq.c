@@ -6,7 +6,7 @@
 /*   By: jeong-yena <jeong-yena@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 13:41:47 by yejeong           #+#    #+#             */
-/*   Updated: 2021/03/17 20:39:40 by jeong-yena       ###   ########.fr       */
+/*   Updated: 2021/03/18 02:15:15 by jeong-yena       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,9 @@ int start_bsq(t_map *map)
 
 	rt = 1;
 	find = clone_map(map);
-	if (find_bsq(map, &find) == 0)
+	if (map->size == 0)
+		one_print(map->full);
+	else if (find_bsq(map, &find) == 0)
 		rt = 0;
 	else
 	{
