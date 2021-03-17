@@ -3,7 +3,7 @@ CFLAGS = -Wall -Wextra -Werror
 SRCDIR = srcs
 INCDIR = includes
 TARGET = BSQ
-SRCS = $(wildcard $(SRCDIR)/*.c)
+SRCS = $(SRCDIR)/main.c $(SRCDIR)/read.c $(SRCDIR)/stdread.c $(SRCDIR)/valid.c $(SRCDIR)/string.c $(SRCDIR)/find_bsq.c $(SRCDIR)/util.c
 OBJS = $(SRCS:.c=.o)
 
 all: $(TARGET)

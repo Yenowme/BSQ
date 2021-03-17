@@ -36,6 +36,7 @@ int valid_map(int fd, t_map *map)
 			i++;
 			if (j != map->size)
 				return (0);
+
 			j = 0;
 		}
 		else if (buf == map->emp || buf == map->obs)
@@ -43,10 +44,8 @@ int valid_map(int fd, t_map *map)
 		else
 			return (0);
 	}
-
 	if (close(fd) == -1)
 		return (0);
-
 	if (i != map->size)
 		return (0);
 	return (1);

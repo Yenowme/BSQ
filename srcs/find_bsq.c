@@ -12,42 +12,19 @@
 
 #include "bsq.h"
 
-void print_map(t_map *map)
-{
-	int i;
-
-	i = 0;
-	while (i < map->size)
-	{
-		write(1, map->map[i], map->size); //each end of line..?
-		write(1, "\n", 1);
-		i++;
-	}
-}
-
-int find_min(int west, int north, int west_north)
-{
-	int min;
-
-	min = west > north ? north : west;
-	min = min > west_north ? west_north : min;
-	return (min);
-}
-
-//꽉찬 맵 받는다
-int find_bsq(t_map *map, t_find *find) //구조체에 최댓값
+int find_bsq(t_map *map, t_find *find)
 {
 	int i;
 	int j;
 
 	i = 0;
 	find->max = 0;
-	while (++i < map->size) //1,1부터 개행빼고 검사
+	while (++i < map->size)
 	{
 		j = 0;
-		while (++j < map->size) //1,1부터 개행빼고 검사
+		while (++j < map->size)
 		{
-			if (find->clone[i][j] == '1') //현재가 경로라면
+			if (find->clone[i][j] == '1')
 			{
 				find->clone[i][j] = find_min(find->clone[i][j - 1], find->clone[i - 1][j], find->clone[i - 1][j - 1]) + 1; //최소값 + 1
 				if (find->max < find->clone[i][j] - '0')
@@ -70,12 +47,12 @@ void fill_bsq(t_find find, t_map *map)
 
 	max = find.max;
 	i = find.x;
-	while (i > find.x - find.max) //max만큼 이동
+	while (i > find.x - find.max)
 	{
 		j = find.y;
-		while (j > find.y - find.max) //max 만큼 이동
+		while (j > find.y - find.max)
 		{
-			map->map[i][j] = map->full; //채우
+			map->map[i][j] = map->full;
 			j--;
 		}
 		i--;
@@ -101,7 +78,7 @@ t_find clone_map(t_map *map)
 	int j;
 
 	i = -1;
-	find.clone = malloc_map(map->size); //map 말록 동일하게
+	find.clone = malloc_map(map->size);
 	while (++i < map->size)
 	{
 		j = -1;
@@ -123,15 +100,15 @@ int start_bsq(t_map *map)
 	int rt;
 
 	rt = 1;
-	find = clone_map(map); // find->clone 에 맵 클론하기
+	find = clone_map(map);
 	if (find_bsq(map, &find) == 0)
 		rt = 0;
 	else
-	{						 //숫자 바꾸고 bsq찾기:w
-		fill_bsq(find, map); //맵 채워넣기
-		print_map(map);		 //맵 프린트 하기
+	{
+		fill_bsq(find, map);
+		print_map(map);
 	}
-	map_free(map->size, map->map); //맵 해재
+	map_free(map->size, map->map);
 	map_free(map->size, find.clone);
 	free(map);
 	return (rt);

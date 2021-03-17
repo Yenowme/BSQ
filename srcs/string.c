@@ -32,19 +32,6 @@ int ft_strlen(char *str)
     return (idx);
 }
 
-void ft_strcpy(char *dest, char *src)
-{
-    int i;
-
-    i = 0;
-    while (src[i])
-    {
-        dest[i] = src[i];
-        i++;
-    }
-    dest[i] = 0;
-}
-
 int numeric(char ch)
 {
     if (ch >= '0' && ch <= '9')
