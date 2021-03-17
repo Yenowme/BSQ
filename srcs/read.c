@@ -90,9 +90,10 @@ int set_map(char *filename, t_map *map)
     if ((fd = open(filename, O_RDONLY)) == -1)
         return (0);
     first(fd);
-
     while (read(fd, &buf, 1))
-        if (buf == '\n')
+        if (first_obs(map, buf) == 0)
+            return (0);
+        else if (buf == '\n')
         {
             map->map[i][j] = 0;
             i++;

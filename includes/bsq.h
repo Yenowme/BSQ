@@ -61,6 +61,7 @@ int start_bsq(t_map *map);
 
 char **malloc_map(int size);
 int valid_map(int fd, t_map *map);
+int first_obs(t_map *map, char ch);
 
 t_map *std_read_map();
 int std_read_first_line(t_map *map);

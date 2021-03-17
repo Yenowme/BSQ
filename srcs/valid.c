@@ -50,3 +50,10 @@ int valid_map(int fd, t_map *map)
 		return (0);
 	return (1);
 }
+
+int first_obs(t_map *map, char ch)
+{
+	if (map->size == 1 && ch == map->obs)
+		return (0);
+	return (1);
+}
