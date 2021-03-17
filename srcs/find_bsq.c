@@ -6,7 +6,7 @@
 /*   By: jeong-yena <jeong-yena@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 13:41:47 by yejeong           #+#    #+#             */
-/*   Updated: 2021/03/18 02:15:15 by jeong-yena       ###   ########.fr       */
+/*   Updated: 2021/03/18 02:18:29 by jeong-yena       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,8 +110,8 @@ int start_bsq(t_map *map)
 		fill_bsq(find, map);
 		print_map(map);
 	}
-	map_free(map->size, map->map);
-	map_free(map->size, find.clone);
-	free(map);
+	// map_free(map->size, map->map);
+	// map_free(map->size, find.clone);
+	// free(map);
 	return (rt);
 }

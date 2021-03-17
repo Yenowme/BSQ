@@ -33,6 +33,8 @@ int bsq(char *filename);
 
 char **malloc_map(int size);
 
+void one_print(char c);
+
 int ft_atoi(char *str);
 int ft_is_duple(t_map *map);
 void printerror(void);
