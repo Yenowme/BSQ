@@ -40,7 +40,9 @@ int std_set_map(t_map *map)
     if (!map->map)
         return (0);
     while (read(0, &buf, 1))
-        if (buf == '\n')
+        if (first_obs(map, buf) == 0)
+            return (0);
+        else if (buf == '\n')
         {
             if (j != map->size)
                 return (0);
@@ -68,4 +70,3 @@ t_map *std_read_map()
         return (0);
     return (map);
 }
-
