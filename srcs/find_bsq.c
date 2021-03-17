@@ -6,7 +6,7 @@
 /*   By: jeong-yena <jeong-yena@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 13:41:47 by yejeong           #+#    #+#             */
-/*   Updated: 2021/03/18 02:33:59 by jeong-yena       ###   ########.fr       */
+/*   Updated: 2021/03/18 02:52:31 by jeong-yena       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ void map_free(int size, char **map)
 	while (i < size)
 	{
 		free(map[i]);
+		i++;
 	}
 	free(map);
 }

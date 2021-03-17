@@ -95,12 +95,12 @@ int set_map(char *filename, t_map *map)
             return (0);
         else if (buf == '\n')
         {
-            map->map[i][j] = 0;
-            i++;
+            map->map[i++][j] = 0;
             j = 0;
         }
         else
             map->map[i][j++] = buf;
     map->map[i] = 0;
+    close(fd);
     return (1);
 }
