@@ -6,7 +6,7 @@
 /*   By: jeong-yena <jeong-yena@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 13:41:47 by yejeong           #+#    #+#             */
-/*   Updated: 2021/03/17 19:20:14 by jeong-yena       ###   ########.fr       */
+/*   Updated: 2021/03/17 20:39:40 by jeong-yena       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,9 @@ int find_bsq(t_map *map, t_find *find) //구조체에 최댓값
 			if (find->clone[i][j] == '1') //현재가 경로라면
 			{
 				find->clone[i][j] = find_min(find->clone[i][j - 1], find->clone[i - 1][j], find->clone[i - 1][j - 1]) + 1; //최소값 + 1
-				if (find->max < map->map[i][j])
+				if (find->max < find->clone[i][j] - '0')
 				{
-					find->max = map->map[i][j];
+					find->max = find->clone[i][j] - '0';
 					find->x = i;
 					find->y = j;
 				}

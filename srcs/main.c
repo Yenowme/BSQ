@@ -65,13 +65,20 @@ t_map *read_map(char *filename)
 		return (0);
 	if (valid_map(fd, map) == 0)
 		return (0);
-	if (close(fd))
-		return (0);
 	if (set_map(filename, map) == 0)
 		return (0);
 	if (close(fd))
 		return (0);
 	return (map);
+}
+
+void first(int fd)
+{
+	char ch;
+
+	while (read(fd, &ch, 1))
+		if (ch == '\n')
+			return;
 }
 
 int set_map(char *filename, t_map *map)
@@ -81,13 +88,14 @@ int set_map(char *filename, t_map *map)
 	int fd;
 	char buf;
 
-	j = -1;
-	i = -1;
+	j = 0;
+	i = 0;
 	map->map = malloc_map(map->size);
 	if (!map->map)
 		return (0);
-	if ((fd = open(filename, O_RDONLY) == 0))
+	if ((fd = open(filename, O_RDONLY)) == -1)
 		return (0);
+	first(fd);
 	while (read(fd, &buf, 1))
 		if (buf == '\n')
 		{
